@@ -1,0 +1,18 @@
+﻿<Window x:Class="laba.dobr3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba"
+        mc:Ignorable="d"
+        Title="dobr3" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="vih" Content="Выход" HorizontalAlignment="Left" Margin="569,290,0,0" VerticalAlignment="Top" Width="72" Click="vih_Click"/>
+        <Button x:Name="sohr" Content="Сохранить" HorizontalAlignment="Left" Margin="117,290,0,0" VerticalAlignment="Top" Width="72" Click="sohr_Click"/>
+        <Label Content="ФИО" HorizontalAlignment="Left" Margin="173,89,0,0" VerticalAlignment="Top"/>
+        <Label Content="Номер" HorizontalAlignment="Left" Margin="170,137,0,0" VerticalAlignment="Top" Width="49"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="142,177,0,0" VerticalAlignment="Top"/>
+        <TextBox  Text="{Binding ФИО}" HorizontalAlignment="Left" Margin="215,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="386"/>
+        <TextBox Text="{Binding Номер}" HorizontalAlignment="Left" Margin="215,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="386"/>
+    </Grid>
+</Window>

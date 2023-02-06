@@ -1,0 +1,37 @@
+﻿<Window x:Class="laba.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="vih1" Content="Выход" HorizontalAlignment="Left" Margin="705,390,0,0" VerticalAlignment="Top" Width="66" Click="vih1_Click"/>
+        <DataGrid x:Name="grid"  Width="600" Height="180" AutoGenerateColumns="False" Margin="10,10,190,244">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Пицца" Binding="{Binding Пицца}" Width="120" />
+                <DataGridTextColumn Header="Заказчик" Binding="{Binding Заказчик}" Width="120"/>
+                <DataGridTextColumn Header="Пиццайоло" Binding="{Binding Пиццайоло}" Width="110"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Цена}" Width="100"/>
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="red" Width="120" Click="red_Click">Изменить</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="dob" Content="Добавить" HorizontalAlignment="Left" Margin="655,23,0,0" VerticalAlignment="Top" Width="83" Click="dob_Click"/>
+        <Button x:Name="del" Content="Удалить" HorizontalAlignment="Left" Margin="655,59,0,0" VerticalAlignment="Top" Width="83" Click="del_Click"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="140" Margin="10,284,640,10" Background="#FFFDD9D9"/>
+        <Button Content="Пицца" HorizontalAlignment="Left" Margin="24,293,0,0" VerticalAlignment="Top" Width="77" Click="Button_Click"/>
+        <Button Content="Заказчик" HorizontalAlignment="Left" Margin="24,318,0,0" VerticalAlignment="Top" Width="77" Click="Button_Click_1"/>
+        <Button Content="Пиццайоло" HorizontalAlignment="Left" Margin="24,344,0,0" VerticalAlignment="Top" Width="77" Click="Button_Click_2"/>
+        <Button Content="Разряд" HorizontalAlignment="Left" Margin="24,369,0,0" VerticalAlignment="Top" Width="77" Click="Button_Click_3"/>
+        <Button Content="Генератион" HorizontalAlignment="Left" Margin="641,217,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_4"/>
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище djopaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Готовка пиццы">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Пицца" Type="int" />
+          <Property Name="Заказчик" Type="int" />
+          <Property Name="Пиццайоло" Type="int" />
+          <Property Name="Цена" Type="int" />
+        </EntityType>
+        <EntityType Name="Заказчик">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ФИО" Type="nvarchar" MaxLength="50" />
+          <Property Name="Номер" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Пицца">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Пицца" Type="nvarchar" MaxLength="50" />
+          <Property Name="Состав" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Пиццайоло">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ФИО" Type="nvarchar" MaxLength="50" />
+          <Property Name="Разряд" Type="int" />
+        </EntityType>
+        <EntityType Name="Разряд">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Разряд" Type="int" />
+        </EntityType>
+        <Association Name="FK_Готовка пиццы_Заказчик1">
+          <End Role="Заказчик" Type="Self.Заказчик" Multiplicity="0..1" />
+          <End Role="Готовка пиццы" Type="Self.Готовка пиццы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Заказчик">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Готовка пиццы">
+              <PropertyRef Name="Заказчик" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Готовка пиццы_Пицца">
+          <End Role="Пицца" Type="Self.Пицца" Multiplicity="0..1" />
+          <End Role="Готовка пиццы" Type="Self.Готовка пиццы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Пицца">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Готовка пиццы">
+              <PropertyRef Name="Пицца" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Готовка пиццы_Пиццайоло">
+          <End Role="Пиццайоло" Type="Self.Пиццайоло" Multiplicity="0..1" />
+          <End Role="Готовка пиццы" Type="Self.Готовка пиццы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Пиццайоло">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Готовка пиццы">
+              <PropertyRef Name="Пиццайоло" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Пиццайоло_Разряд">
+          <End Role="Разряд" Type="Self.Разряд" Multiplicity="0..1" />
+          <End Role="Пиццайоло" Type="Self.Пиццайоло" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Разряд">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Пиццайоло">
+              <PropertyRef Name="Разряд" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище djopaModelContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Готовка пиццы" EntityType="Self.Готовка пиццы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Заказчик" EntityType="Self.Заказчик" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Пицца" EntityType="Self.Пицца" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Пиццайоло" EntityType="Self.Пиццайоло" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Разряд" EntityType="Self.Разряд" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Готовка пиццы_Заказчик1" Association="Self.FK_Готовка пиццы_Заказчик1">
+            <End Role="Заказчик" EntitySet="Заказчик" />
+            <End Role="Готовка пиццы" EntitySet="Готовка пиццы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Готовка пиццы_Пицца" Association="Self.FK_Готовка пиццы_Пицца">
+            <End Role="Пицца" EntitySet="Пицца" />
+            <End Role="Готовка пиццы" EntitySet="Готовка пиццы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Готовка пиццы_Пиццайоло" Association="Self.FK_Готовка пиццы_Пиццайоло">
+            <End Role="Пиццайоло" EntitySet="Пиццайоло" />
+            <End Role="Готовка пиццы" EntitySet="Готовка пиццы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пиццайоло_Разряд" Association="Self.FK_Пиццайоло_Разряд">
+            <End Role="Разряд" EntitySet="Разряд" />
+            <End Role="Пиццайоло" EntitySet="Пиццайоло" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="djopaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Готовка_пиццы">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Пицца" Type="Int32" />
+          <Property Name="Заказчик" Type="Int32" />
+          <Property Name="Пиццайоло" Type="Int32" />
+          <Property Name="Цена" Type="Int32" />
+          <NavigationProperty Name="Заказчик1" Relationship="Self.FK_Готовка_пиццы_Заказчик1" FromRole="Готовка_пиццы" ToRole="Заказчик" />
+          <NavigationProperty Name="Пицца1" Relationship="Self.FK_Готовка_пиццы_Пицца" FromRole="Готовка_пиццы" ToRole="Пицца" />
+          <NavigationProperty Name="Пиццайоло1" Relationship="Self.FK_Готовка_пиццы_Пиццайоло" FromRole="Готовка_пиццы" ToRole="Пиццайоло" />
+        </EntityType>
+        <EntityType Name="Заказчик">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ФИО" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Номер" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Готовка_пиццы" Relationship="Self.FK_Готовка_пиццы_Заказчик1" FromRole="Заказчик" ToRole="Готовка_пиццы" />
+        </EntityType>
+        <EntityType Name="Пицца">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Пицца1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Состав" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Готовка_пиццы" Relationship="Self.FK_Готовка_пиццы_Пицца" FromRole="Пицца" ToRole="Готовка_пиццы" />
+        </EntityType>
+        <EntityType Name="Пиццайоло">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ФИО" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Разряд" Type="Int32" />
+          <NavigationProperty Name="Готовка_пиццы" Relationship="Self.FK_Готовка_пиццы_Пиццайоло" FromRole="Пиццайоло" ToRole="Готовка_пиццы" />
+          <NavigationProperty Name="Разряд1" Relationship="Self.FK_Пиццайоло_Разряд" FromRole="Пиццайоло" ToRole="Разряд" />
+        </EntityType>
+        <EntityType Name="Разряд">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Разряд1" Type="Int32" />
+          <NavigationProperty Name="Пиццайоло" Relationship="Self.FK_Пиццайоло_Разряд" FromRole="Разряд" ToRole="Пиццайоло" />
+        </EntityType>
+        <Association Name="FK_Готовка_пиццы_Заказчик1">
+          <End Role="Заказчик" Type="Self.Заказчик" Multiplicity="0..1" />
+          <End Role="Готовка_пиццы" Type="Self.Готовка_пиццы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Заказчик">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Готовка_пиццы">
+              <PropertyRef Name="Заказчик" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Готовка_пиццы_Пицца">
+          <End Role="Пицца" Type="Self.Пицца" Multiplicity="0..1" />
+          <End Role="Готовка_пиццы" Type="Self.Готовка_пиццы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Пицца">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Готовка_пиццы">
+              <PropertyRef Name="Пицца" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Готовка_пиццы_Пиццайоло">
+          <End Role="Пиццайоло" Type="Self.Пиццайоло" Multiplicity="0..1" />
+          <End Role="Готовка_пиццы" Type="Self.Готовка_пиццы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Пиццайоло">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Готовка_пиццы">
+              <PropertyRef Name="Пиццайоло" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Пиццайоло_Разряд">
+          <End Role="Разряд" Type="Self.Разряд" Multiplicity="0..1" />
+          <End Role="Пиццайоло" Type="Self.Пиццайоло" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Разряд">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Пиццайоло">
+              <PropertyRef Name="Разряд" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="djopaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Готовка_пиццы" EntityType="Self.Готовка_пиццы" />
+          <EntitySet Name="Заказчик" EntityType="Self.Заказчик" />
+          <EntitySet Name="Пицца" EntityType="Self.Пицца" />
+          <EntitySet Name="Пиццайоло" EntityType="Self.Пиццайоло" />
+          <EntitySet Name="Разряд" EntityType="Self.Разряд" />
+          <AssociationSet Name="FK_Готовка_пиццы_Заказчик1" Association="Self.FK_Готовка_пиццы_Заказчик1">
+            <End Role="Заказчик" EntitySet="Заказчик" />
+            <End Role="Готовка_пиццы" EntitySet="Готовка_пиццы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Готовка_пиццы_Пицца" Association="Self.FK_Готовка_пиццы_Пицца">
+            <End Role="Пицца" EntitySet="Пицца" />
+            <End Role="Готовка_пиццы" EntitySet="Готовка_пиццы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Готовка_пиццы_Пиццайоло" Association="Self.FK_Готовка_пиццы_Пиццайоло">
+            <End Role="Пиццайоло" EntitySet="Пиццайоло" />
+            <End Role="Готовка_пиццы" EntitySet="Готовка_пиццы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пиццайоло_Разряд" Association="Self.FK_Пиццайоло_Разряд">
+            <End Role="Разряд" EntitySet="Разряд" />
+            <End Role="Пиццайоло" EntitySet="Пиццайоло" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище djopaModelContainer" CdmEntityContainer="djopaEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="djopaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Готовка_пиццы">
+            <EntityTypeMapping TypeName="djopaModel.Готовка_пиццы">
+              <MappingFragment StoreEntitySet="Готовка пиццы">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Пицца" ColumnName="Пицца" />
+                <ScalarProperty Name="Заказчик" ColumnName="Заказчик" />
+                <ScalarProperty Name="Пиццайоло" ColumnName="Пиццайоло" />
+                <ScalarProperty Name="Цена" ColumnName="Цена" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Заказчик">
+            <EntityTypeMapping TypeName="djopaModel.Заказчик">
+              <MappingFragment StoreEntitySet="Заказчик">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+                <ScalarProperty Name="Номер" ColumnName="Номер" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Пицца">
+            <EntityTypeMapping TypeName="djopaModel.Пицца">
+              <MappingFragment StoreEntitySet="Пицца">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Пицца1" ColumnName="Пицца" />
+                <ScalarProperty Name="Состав" ColumnName="Состав" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Пиццайоло">
+            <EntityTypeMapping TypeName="djopaModel.Пиццайоло">
+              <MappingFragment StoreEntitySet="Пиццайоло">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+                <ScalarProperty Name="Разряд" ColumnName="Разряд" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Разряд">
+            <EntityTypeMapping TypeName="djopaModel.Разряд">
+              <MappingFragment StoreEntitySet="Разряд">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Разряд1" ColumnName="Разряд" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

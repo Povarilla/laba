@@ -1,0 +1,22 @@
+﻿<Window x:Class="laba.dobr"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba"
+        mc:Ignorable="d"
+        Title="dobr" Height="390" Width="776">
+    <Grid Margin="0,0,0,-6">
+        <Button x:Name="vih" Content="Выход" HorizontalAlignment="Left" Margin="611,290,0,0" VerticalAlignment="Top" Width="72" Click="vih_Click"/>
+        <Button x:Name="sohr" Content="Сохранить" HorizontalAlignment="Left" Margin="117,290,0,0" VerticalAlignment="Top" Width="72" Click="sohr_Click"/>
+        <Label Content="Пицца" HorizontalAlignment="Left" Margin="173,89,0,0" VerticalAlignment="Top"/>
+        <Label Content="Заказчик" HorizontalAlignment="Left" Margin="153,137,0,0" VerticalAlignment="Top" Width="80"/>
+        <Label Content="Пиццайоло" HorizontalAlignment="Left" Margin="142,0,0,0" VerticalAlignment="Center"/>
+        <TextBox  Text="{Binding Пицца}" HorizontalAlignment="Left" Margin="215,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="386"/>
+        <TextBox Text="{Binding Заказчик}" HorizontalAlignment="Left" Margin="215,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="386"/>
+        <TextBox Text="{Binding Пиццайоло}" HorizontalAlignment="Left" Margin="215,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="386"/>
+        <Label Content="Цена" HorizontalAlignment="Left" Margin="173,217,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Цена}" HorizontalAlignment="Left" Margin="215,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="386"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,26 @@
+﻿<Window x:Class="laba.pizail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba"
+        mc:Ignorable="d"
+        Title="pizail" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="grid4"  Width="600" Height="180" AutoGenerateColumns="False" Margin="10,10,190,244">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding ФИО}" Width="120" />
+                <DataGridTextColumn Header="Разряд" Binding="{Binding Разряд}" Width="470"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button Content="Выход" HorizontalAlignment="Left" Margin="727,404,0,0" VerticalAlignment="Top" Width="63" Click="Button_Click"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="657,13,0,0" VerticalAlignment="Top" Width="78" Click="Button_Click_1"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="140" Margin="10,284,640,10" Background="#FFFDD9D9"/>
+        <Button Content="Готовка пиццы" HorizontalAlignment="Left" Margin="24,293,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click_2"/>
+        <Button Content="Пицца" HorizontalAlignment="Left" Margin="24,318,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click_3"/>
+        <Button Content="Заказчик" HorizontalAlignment="Left" Margin="24,344,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click_4"/>
+        <Button Content="Разряд" HorizontalAlignment="Left" Margin="24,369,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click_5"/>
+        <Button Content="Генератион" HorizontalAlignment="Left" Margin="672,234,0,0" VerticalAlignment="Top" Width="72" Click="Button_Click_6"/>
+    </Grid>
+</Window>
